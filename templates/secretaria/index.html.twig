@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Secretaria index{% endblock %}
+
+{% block body %}
+    <h3>Listagem de Secretarias</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Endereco</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for secretarium in secretarias %}
+            <tr>
+                <td>{{ secretarium.id }}</td>
+                <td>{{ secretarium.nome }}</td>
+                <td>{{ secretarium.endereco }}</td>
+                <td>{{ secretarium.telefone }}</td>
+                <td>{{ secretarium.email }}</td>
+                <td>
+                    <a href="{{ path('secretaria_ver', {'id': secretarium.id}) }}">ver</a>
+                    <a href="{{ path('secretaria_editar', {'id': secretarium.id}) }}">editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">nenhum registro encontrado</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('secretaria_novo') }}">Novo</a>
+{% endblock %}

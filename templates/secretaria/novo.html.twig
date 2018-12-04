@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nova Secretaria{% endblock %}
+
+{% block body %}
+    <h1>Adicionar Secretaria</h1>
+
+    {{ include('secretaria/_form.html.twig') }}
+
+    <a href="{{ path('secretaria_index') }}">Voltar</a>
+{% endblock %}
