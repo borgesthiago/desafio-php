@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Secretaria index{% endblock %}
+{% block title %}Secretaria{% endblock %}
 
 {% block body %}
     <h3>Listagem de Secretarias</h3>
@@ -25,8 +25,9 @@
                 <td>{{ secretarium.telefone }}</td>
                 <td>{{ secretarium.email }}</td>
                 <td>
-                    <a href="{{ path('secretaria_ver', {'id': secretarium.id}) }}">ver</a>
-                    <a href="{{ path('secretaria_editar', {'id': secretarium.id}) }}">editar</a>
+                    <a href="{{ path('secretaria_ver', {'id': secretarium.id}) }}"><i class="fa fa-file-alt" aria-hidden="true"></i></a>
+                    <a href="{{ path('secretaria_editar', {'id': secretarium.id}) }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                    <a href="{{ path('secretaria_delete', {'id': secretarium.id}) }}"><i class="fa fa-trash" aria-hidden="true"></i></a>
                 </td>
             </tr>
         {% else %}
@@ -37,5 +38,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('secretaria_novo') }}">Novo</a>
+    <a href="{{ path('secretaria_novo') }}"><button type="button" class="btn btn-info"><i class="fa fa-plus-circle" aria-hidden="true"></i> Novo</button></a>
 {% endblock %}

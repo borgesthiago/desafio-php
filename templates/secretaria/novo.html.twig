@@ -3,9 +3,9 @@
 {% block title %}Nova Secretaria{% endblock %}
 
 {% block body %}
-    <h1>Adicionar Secretaria</h1>
+    <h3>Adicionar Secretaria</h3>
 
     {{ include('secretaria/_form.html.twig') }}
 
-    <a href="{{ path('secretaria_index') }}">Voltar</a>
+    <a href="{{ path('secretaria_index') }}"><button type="button" class="btn btn-sm btn-secondary"><i class="fa fa-arrow-circle-left"></i> Voltar</button></a>
 {% endblock %}

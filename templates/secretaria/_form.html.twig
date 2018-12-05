@@ -1,4 +1,36 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Salvar') }}</button>
-{{ form_end(form) }}
+<div class="row">
+    <div class="col-md-12">
+    {{ form_start(form) }}
+
+    <div class="col-md-5">
+          {{ form_label(form.nome) }}
+    </div>
+    <div class="col-md-5">
+          {{ form_widget(form.nome, {'attr': {'class': 'form-control'}}) }} 
+    </div>
+    <div class="col-md-5">
+          {{ form_label(form.endereco) }}
+    </div>
+    <div class="col-md-5">
+          {{ form_widget(form.endereco, {'attr': {'class': 'form-control'}}) }} 
+    </div>
+    <div class="col-md-5">
+          {{ form_label(form.telefone) }}
+    </div>
+    <div class="col-md-5">
+          {{ form_widget(form.telefone, {'attr': {'class': 'form-control'}}) }} 
+    </div>
+    <div class="col-md-5">
+          {{ form_label(form.email) }}
+    </div>
+    <div class="col-md-5">
+          {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }} 
+    </div>
+    <br>
+        <div class="col-md-12">
+            <button class="btn btn-primary"><i class="fa fa-save"></i> {{ button_label|default('Salvar') }}</button>
+        </div>
+        
+    <br>
+    {{ form_end(form) }}
+    </div>
