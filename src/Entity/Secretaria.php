@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -35,6 +37,16 @@ class Secretaria
      * @ORM\Column(type="string", length=150, nullable=true)
      */
     private $email;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Funcionario", mappedBy="secretaria")
+     */
+    private $secretaria;
+
+    public function __construct()
+    {
+        $this->secretaria = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -85,6 +97,37 @@ class Secretaria
     public function setEmail(?string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Funcionario[]
+     */
+    public function getSecretaria(): Collection
+    {
+        return $this->secretaria;
+    }
+
+    public function addSecretarium(Funcionario $secretarium): self
+    {
+        if (!$this->secretaria->contains($secretarium)) {
+            $this->secretaria[] = $secretarium;
+            $secretarium->setSecretaria($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSecretarium(Funcionario $secretarium): self
+    {
+        if ($this->secretaria->contains($secretarium)) {
+            $this->secretaria->removeElement($secretarium);
+            // set the owning side to null (unless already changed)
+            if ($secretarium->getSecretaria() === $this) {
+                $secretarium->setSecretaria(null);
+            }
+        }
 
         return $this;
     }
