@@ -42,6 +42,11 @@ class Funcionario
      */
     private $secretaria;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $status;
+
     
     public function getId()
     {
@@ -104,6 +109,18 @@ class Funcionario
     public function setSecretaria(Secretaria $secretaria): self
     {
         $this->secretaria = $secretaria;
+
+        return $this;
+    }
+
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    public function setStatus(int $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }

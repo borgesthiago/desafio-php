@@ -3,9 +3,22 @@
 {% block title %}Nova Secretaria{% endblock %}
 
 {% block body %}
-    <h3>Adicionar Secretaria</h3>
+<div class="espaco">
+ <div class="ui grid">
+        <div class="row">
+            <div class="eight wide column">
+                <h3>Adicionar Secretaria</h3>
+            </div>
+            <div class="eight wide column">
+
+            </div>
+        </div>
+    </div>
+
 
     {{ include('secretaria/_form.html.twig') }}
+    
+    <a href="{{ path('secretaria_index') }}"><button type="button" class="ui button secondary"><i class="fa fa-arrow-circle-left"></i> Voltar</button></a>
 
-    <a href="{{ path('secretaria_index') }}"><button type="button" class="btn btn-sm btn-secondary"><i class="fa fa-arrow-circle-left"></i> Voltar</button></a>
+</div>
 {% endblock %}

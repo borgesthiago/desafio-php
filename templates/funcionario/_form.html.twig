@@ -1,42 +1,24 @@
-<div class="row">
-    <div class="col-md-12">
-    {{ form_start(form) }}
-
-    <div class="col-md-5">
-          {{ form_label(form.nome) }}
-    </div>
-    <div class="col-md-5">
-          {{ form_widget(form.nome, {'attr': {'class': 'form-control'}}) }} 
-    </div>
-    <div class="col-md-5">
-          {{ form_label(form.matricula) }}
-    </div>
-    <div class="col-md-5">
-          {{ form_widget(form.matricula, {'attr': {'class': 'form-control'}}) }} 
-    </div>
-    <div class="col-md-5">
-          {{ form_label(form.cpf) }}
-    </div>
-    <div class="col-md-5">
-          {{ form_widget(form.cpf, {'attr': {'class': 'form-control'}}) }} 
-    </div>
-    <div class="col-md-5">
-          {{ form_label(form.endereco) }}
-    </div>
-    <div class="col-md-5">
-          {{ form_widget(form.endereco, {'attr': {'class': 'form-control'}}) }} 
-    </div>
-     <div class="col-md-5">
-          {{ form_label(form.secretaria) }}
-    </div>
-    <div class="col-md-5">
-          {{ form_widget(form.secretaria, {'attr': {'class': 'form-control'}}) }} 
-    </div>
-    <br>
-        <div class="col-md-12">
-            <button class="btn btn-primary"><i class="fa fa-save"></i> {{ button_label|default('Salvar') }}</button>
+{% form_theme form 'form/form_div.html.twig' %}
+<div class="ui grid">
+    <div class="column">
+        {{ form_start(form, {'attr': {'class': 'ui form'}}) }}
+        <div class="fields">
+            {{ form_row(form.nome, {'attr': {'data-row-class': 'twelve wide'}}) }}
+             {{ form_row(form.cpf, {'attr': {'data-row-class': 'four wide'}}) }}
         </div>
-        
-    <br>
-    {{ form_end(form) }}
+        <div class="fields">
+            {{ form_row(form.matricula, {'attr': {'data-row-class': 'three wide'}}) }}
+            {{ form_row(form.endereco, {'attr': {'data-row-class': 'eight wide'}}) }}
+            {{ form_row(form.status, {'attr': {'data-row-class': 'two wide'}}) }}
+        </div>
+        <div class="fields">
+        {{ form_row(form.secretaria, {'attr': {'data-row-class': 'six wide'}}) }}
+        </div>
+        <div class="fields">
+            <div class="ui right floated buttons">
+                <button class="ui button">{{ button_label|default('Salvar') }}</button>
+            </div>
+        </div>
     </div>
+</div>
+{{ form_end(form) }}

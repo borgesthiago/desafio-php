@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class FuncionarioType extends AbstractType
 {
@@ -18,13 +19,17 @@ class FuncionarioType extends AbstractType
             ->add('matricula')
             ->add('cpf')
             ->add('endereco')
-            //->add('secretaria')
             ->add('secretaria', EntityType::class, [
                 'class' => Secretaria::class,
                 'choice_label' => 'nome',
                 'placeholder' => 'Selecione'
-            ])
+                ])            
         ;
+        $builder->add('status', ChoiceType::class, array(
+            'choices'  => array(
+                'Ativo'    =>1,
+                'Inativo' =>0
+            )));
     }
 
     public function configureOptions(OptionsResolver $resolver)
