@@ -48,12 +48,12 @@ class Secretaria
         $this->secretaria = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    public function getNome(): ?string
+    public function getNome()
     {
         return $this->nome;
     }
@@ -65,7 +65,7 @@ class Secretaria
         return $this;
     }
 
-    public function getEndereco(): ?string
+    public function getEndereco()
     {
         return $this->endereco;
     }
@@ -77,24 +77,24 @@ class Secretaria
         return $this;
     }
 
-    public function getTelefone(): ?string
+    public function getTelefone()
     {
         return $this->telefone;
     }
 
-    public function setTelefone(?string $telefone): self
+    public function setTelefone(string $telefone): self
     {
         $this->telefone = $telefone;
 
         return $this;
     }
 
-    public function getEmail(): ?string
+    public function getEmail()
     {
         return $this->email;
     }
 
-    public function setEmail(?string $email): self
+    public function setEmail(string $email): self
     {
         $this->email = $email;
 

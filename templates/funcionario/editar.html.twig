@@ -1,13 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Funcionario{% endblock %}
+{% block title %}Editar Funcionario{% endblock %}
 
 {% block body %}
-    <h1>Edit Funcionario</h1>
+    <h3>Editar Funcionario</h3>
 
-    {{ include('funcionario/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('funcionario/_form.html.twig', {'button_label': 'Atualizar'}) }}
 
-    <a href="{{ path('funcionario_index') }}">back to list</a>
-
-    {{ include('funcionario/_delete_form.html.twig') }}
+    <div class="container">
+<div class="col-md-12">
+    <div class="col-md-4">
+        <a href="{{ path('funcionario_index') }}"><button type="button" class="btn btn-sm btn-secondary"><i class="fa fa-arrow-circle-left"></i> Voltar</button></a>
+        {{ include('funcionario/_delete_form.html.twig') }}
+    </div>
+</div>
+</div>
 {% endblock %}

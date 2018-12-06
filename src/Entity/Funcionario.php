@@ -43,12 +43,12 @@ class Funcionario
     private $secretaria;
 
     
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
 
-    public function getNome(): ?string
+    public function getNome()
     {
         return $this->nome;
     }
@@ -60,7 +60,7 @@ class Funcionario
         return $this;
     }
 
-    public function getMatricula(): ?string
+    public function getMatricula()
     {
         return $this->matricula;
     }
@@ -72,7 +72,7 @@ class Funcionario
         return $this;
     }
 
-    public function getCpf(): ?string
+    public function getCpf()
     {
         return $this->cpf;
     }
@@ -84,24 +84,24 @@ class Funcionario
         return $this;
     }
 
-    public function getEndereco(): ?string
+    public function getEndereco()
     {
         return $this->endereco;
     }
 
-    public function setEndereco(?string $endereco): self
+    public function setEndereco(string $endereco): self
     {
         $this->endereco = $endereco;
 
         return $this;
     }
 
-    public function getSecretaria(): ?Secretaria
+    public function getSecretaria()
     {
         return $this->secretaria;
     }
 
-    public function setSecretaria(?Secretaria $secretaria): self
+    public function setSecretaria(Secretaria $secretaria): self
     {
         $this->secretaria = $secretaria;
 

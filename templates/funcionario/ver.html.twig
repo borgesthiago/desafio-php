@@ -20,19 +20,23 @@
                 <td>{{ funcionario.matricula }}</td>
             </tr>
             <tr>
-                <th>Cpf</th>
+                <th>CPF</th>
                 <td>{{ funcionario.cpf }}</td>
             </tr>
             <tr>
-                <th>Endereco</th>
+                <th>Endereço</th>
                 <td>{{ funcionario.endereco }}</td>
+            </tr>
+            <tr>
+                <th>Secretaria</th>
+                <td>{{ funcionario.secretaria.nome }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('funcionario_index') }}">back to list</a>
+    <a href="{{ path('funcionario_index') }}"><button type="button" class="btn btn-sm btn-secondary"><i class="fa fa-arrow-circle-left"></i> Voltar</button></a>
 
-    <a href="{{ path('funcionario_edit', {'id': funcionario.id}) }}">edit</a>
+    <a href="{{ path('funcionario_editar', {'id': funcionario.id}) }}"><button type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> Editar</button></a>
 
     {{ include('funcionario/_delete_form.html.twig') }}
 {% endblock %}

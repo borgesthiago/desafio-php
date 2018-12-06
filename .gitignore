@@ -1,5 +1,6 @@
 
 ###> symfony/framework-bundle ###
+/.data
 /.env.local
 /.env.*.local
 /public/bundles/
