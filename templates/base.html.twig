@@ -21,9 +21,9 @@
                 <div class="menu">
                 {% if is_granted('ROLE_USER') %}
                     <a class="item" href="{{ path('funcionario_index') }}">Listar</a>
-                {% endif %}
-                    {% if is_granted('ROLE_ADMIN') %}
                     <a class="item" href="{{ path('funcionario_novo') }}">Cadastrar</a>
+                {% endif %}
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
                     <div class="divider"></div>
                     <div class="item">
                         <i class="dropdown icon"></i>
@@ -37,6 +37,7 @@
                 </div>
                 </div>
             </div>
+             {% if is_granted('ROLE_ADMIN') %}
             <div class="menu">
                 <div class="ui dropdown item">
                 Secretaria <i class="dropdown icon"></i>
@@ -46,6 +47,7 @@
                 </div>
                 </div>
             </div>
+            {% endif %}
             <div class="right menu"> 
             <div class="item">
             <i class="user blue icon"></i> {{ app.user.email }}            

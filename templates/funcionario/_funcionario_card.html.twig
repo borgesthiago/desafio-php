@@ -40,7 +40,9 @@
                     </div>
                     <div class="extra content">
                         <a href="{{ path('funcionario_editar', {'id': funcionario.id}) }}"><button type="button" class="ui brown button"><i class="edit icon"></i> Editar</button></a>
-                        {{ include('funcionario/_delete_form.html.twig') }}
+                         {% if is_granted('ROLE_ADMIN') %}
+                         {{ include('funcionario/_delete_form.html.twig') }}
+                         {% endif %}
                     </div>
                 </div>
                 
