@@ -33,6 +33,11 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Funcionario", mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $funcionario;
+
     public function getId()
     {
         return $this->id;
@@ -109,5 +114,22 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getFuncionario(): ?Funcionario
+    {
+        return $this->funcionario;
+    }
+
+    public function setFuncionario(Funcionario $funcionario): self
+    {
+        $this->funcionario = $funcionario;
+
+        // set the owning side of the relation if necessary
+        if ($this !== $funcionario->getUser()) {
+            $funcionario->setUser($this);
+        }
+
+        return $this;
     }
 }

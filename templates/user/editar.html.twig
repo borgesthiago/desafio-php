@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar Usuário{% endblock %}
+
+{% block body %}
+<div class="espaco">
+    <h1>Editar Usuário</h1>
+
+    {{ include('user/_form.html.twig', {'button_label': 'Atualizar'}) }}
+
+<div class="container">
+<div class="col-md-12">
+    <div class="col-md-4">
+        <a href="{{ path('user_index') }}"><button type="button" class="btn btn-sm btn-secondary"><i class="fa fa-arrow-circle-left"></i> Voltar</button></a>
+         {% if is_granted('ROLE_ADMIN') %}
+         {{ include('user/_delete_form.html.twig') }}
+         {% endif %}
+    </div>
+</div>
+</div>
+{% endblock %}
