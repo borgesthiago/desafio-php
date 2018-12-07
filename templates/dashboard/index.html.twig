@@ -6,22 +6,42 @@
 
 <div class="ui grid">
     <div class="espaco">
-      <div class="four wide column">
-        <div class="ui card">
-            <div class="content">
-                <i class="right floated building icon"></i>
-                <div class="header">Secretarias</div>
-                <div class="description">
-                <p></p>
+        <div class="four wide column">
+            <div class="ui card">
+                <div class="content">
+                    <i class="right floated users icon"></i>
+                    <div class="header">Funcionários</div>
+                    <div class="description">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="extra content">
+                    Total
+                    <span class="right floated star">
+                        <h2>{{ totalFunc }}</h2>            
+                    </span>
+                </div>
             </div>
         </div>
-        <div class="extra content">
-            Total
-            <span class="right floated star">
-                <h2>2</h2>            
-            </span>
-        </div>
     </div>
+    <div class="espaco">
+        <div class="four wide column">
+            <div class="ui card">
+                <div class="content">
+                    <i class="right floated building icon"></i>
+                    <div class="header">Secretarias</div>
+                    <div class="description">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="extra content">
+                    Total
+                    <span class="right floated star">
+                        <h2>{{ totalSec }}</h2>            
+                    </span>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -19,6 +19,13 @@ class FuncionarioRepository extends ServiceEntityRepository
         parent::__construct($registry, Funcionario::class);
     }
 
+    public function countAll()
+    {
+        return $this->createQueryBuilder('f')
+            ->select('count(f.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
     // /**
     //  * @return Funcionario[] Returns an array of Funcionario objects
     //  */

@@ -19,6 +19,15 @@ class SecretariaRepository extends ServiceEntityRepository
         parent::__construct($registry, Secretaria::class);
     }
 
+    public function countAll()
+    {
+        return $this->createQueryBuilder('s')
+            ->select('count(s.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+
     // /**
     //  * @return Secretaria[] Returns an array of Secretaria objects
     //  */
