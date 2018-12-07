@@ -1,0 +1,35 @@
+ <div class="ui segment">
+                <div class="ui card">
+                    <div class="content">
+                        <div class="header">R$ {{ funcionario.remuneracao.salario |number_format (2, ',', '.') }}
+                            <div class="right floated meta">
+                                <i class="money green icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h4 class="ui sub header"> 
+                        </h4>
+                        <div class="ui small feed">
+                            <div class="event">
+                                <div class="content">
+                                    <div class="summary">
+                                        Gratificação R$: <a>{{ funcionario.remuneracao.gratificacao |number_format (2, ',', '.')}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="event">
+                                <div class="content">
+                                    <div class="summary">
+                                        Desconto R$ :<a>{{ funcionario.remuneracao.desconto |number_format (2, ',', '.')}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" content">
+                        Salário Líquido: R$ {{ funcionario.remuneracao.pagamento |number_format (2, ',', '.')}}
+                    </div>
+                </div>
+                
+            </div>   

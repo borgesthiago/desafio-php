@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Funcionario;
 use App\Entity\Secretaria;
+use App\Entity\Remuneracao;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -29,6 +30,11 @@ class FuncionarioType extends AbstractType
             'choices'  => array(
                 'Ativo'    =>1,
                 'Inativo' =>0
+            )));
+        $builder->add('tipo', ChoiceType::class, array(
+            'choices'  => array(
+                'Estatutário'    => 'Estatutário',
+                'Comissionado' => 'Comissionado'
             )));
     }
 

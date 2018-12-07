@@ -29,8 +29,7 @@ security:
         - { path: ^/funcionario, roles: ROLE_USER }
         - { path: ^/secretaria, roles: ROLE_USER }
         - { path: ^/dashboard, roles: ROLE_USER }
-        - { path: ^/salario, roles: ROLE_ADMIN }
+        - { path: ^/remuneracao, roles: ROLE_ADMIN }
     role_hierarchy:
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
-        ROLE_ADMIN:       [ROLE_USER, ROLE_OUVIDOR]
-        ROLE_OUVIDOR:     [ROLE_USER]
+        ROLE_ADMIN:       [ROLE_USER]

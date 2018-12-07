@@ -47,6 +47,16 @@ class Funcionario
      */
     private $status;
 
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $tipo;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Remuneracao", inversedBy="funcionario", cascade={"persist", "remove"})
+     */
+    private $remuneracao;
+
     
     public function getId()
     {
@@ -123,6 +133,35 @@ class Funcionario
         $this->status = $status;
 
         return $this;
+    }
+
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
+
+    public function setTipo(string $tipo): self
+    {
+        $this->tipo = $tipo;
+
+        return $this;
+    }
+
+    public function getRemuneracao()
+    {
+        return $this->remuneracao;
+    }
+
+    public function setRemuneracao(Remuneracao $remuneracao): self
+    {
+        $this->remuneracao = $remuneracao;
+
+        return $this;
+    }
+
+    public function __toString() 
+    {
+        return $this->getNome();
     }
 
 }
