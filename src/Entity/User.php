@@ -34,7 +34,8 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Funcionario", mappedBy="user", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Funcionario", inversedBy="user")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $funcionario;
 
@@ -92,7 +93,7 @@ class User implements UserInterface
         return (string) $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword(?string $password): self
     {
         $this->password = $password;
 
@@ -116,7 +117,7 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function getFuncionario(): ?Funcionario
+    public function getFuncionario()
     {
         return $this->funcionario;
     }

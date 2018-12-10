@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/user")
@@ -26,7 +27,7 @@ class UserController extends AbstractController
     /**
      * @Route("/novo", name="user_novo", methods="GET|POST")
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -34,6 +35,9 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $password = $encoder->encodePassword($user, $form->getData()->getPassword());
+            $user->setPassword($password);
+
             $em->persist($user);
             $em->flush();
 
@@ -57,13 +61,25 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}/editar", name="user_editar", methods="GET|POST")
      */
-    public function edit(Request $request, User $user): Response
+    public function edit(Request $request, User $user, UserRepository $usuarioRepository, UserPasswordEncoderInterface $encoder): Response
     {
+       
+        $usuarioDb = $usuarioRepository->find($user->getId());
+        $senha = $usuarioDb->getPassword();
+
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            if (null != $user->getPassword()) {
+                $password = $encoder->encodePassword($user, $user->getPassword());
+                $user->setPassword($password);
+            }else{
+                $user->setPassword($senha);
+            }
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'Seus dados foram modificados com sucesso!');
 
             return $this->redirectToRoute('user_index', ['id' => $user->getId()]);
         }

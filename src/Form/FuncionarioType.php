@@ -54,7 +54,7 @@ class FuncionarioType extends AbstractType
                 'Comissionado' => 'Comissionado'
             )))
         ;
-         $builder->add('user', UserType::class);
+        // $builder->add('user', UserType::class);
          $builder->add('contato', ContatoType::class);
          $builder->add('remuneracao', RemuneracaoType::class);
     }

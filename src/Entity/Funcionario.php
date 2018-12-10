@@ -58,8 +58,7 @@ class Funcionario
     private $remuneracao;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="funcionario", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\OneToOne(targetEntity="App\Entity\User", mappedBy="funcionario")     
      */
     private $user;
 
@@ -186,7 +185,7 @@ class Funcionario
         return $this->getNome();
     }
 
-    public function getUser(): ?User
+    public function getUser()
     {
         return $this->user;
     }
@@ -198,19 +197,19 @@ class Funcionario
         return $this;
     }
 
-    public function getContato(): ?Contato
+    public function getContato()
     {
         return $this->contato;
     }
 
-    public function setContato(?Contato $contato): self
+    public function setContato(Contato $contato): self
     {
         $this->contato = $contato;
 
         return $this;
     }
 
-    public function getAdmissao(): ?\DateTimeInterface
+    public function getAdmissao()
     {
         return $this->admissao;
     }
@@ -222,7 +221,7 @@ class Funcionario
         return $this;
     }
 
-    public function getExoneracao(): ?\DateTimeInterface
+    public function getExoneracao()
     {
         return $this->exoneracao;
     }

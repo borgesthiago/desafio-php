@@ -2,6 +2,7 @@
 ###> symfony/framework-bundle ###
 /.data
 /.env.local
+/.env
 /.env.*.local
 /public/bundles/
 /var/

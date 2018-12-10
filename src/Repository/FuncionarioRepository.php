@@ -26,32 +26,22 @@ class FuncionarioRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleScalarResult();
     }
-    // /**
-    //  * @return Funcionario[] Returns an array of Funcionario objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function getFuncionarioAtivoPorData($dataInicio, $dataFim, $status)
     {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('f.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $q = $this->createQueryBuilder("f");
+        $campo = false;
+            if($status == '1'){
+                $campo = 'f.admissao';
+            }elseif($status == '0' and 'f.exoneracao' != null){
+                $campo = 'f.exoneracao';
+            }
+            $q->where(
+                $q->expr()->between($campo, ':data1', ':data2')
+            );
+            $q->andWhere("f.status = '$status'");
+            $q->setParameter('data1', $dataInicio->format('Y-m-d'));
+            $q->setParameter('data2', $dataFim->format('Y-m-d'));
+        return $q->getQuery()->getResult();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Funcionario
-    {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

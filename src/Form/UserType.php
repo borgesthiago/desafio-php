@@ -28,6 +28,7 @@ class UserType extends AbstractType
             ));
         $builder->add('password', PasswordType::class, array(
             'label' => 'Senha',
+            'required' => false
         ));
         $builder->add('funcionario', HiddenType::class);
     }
