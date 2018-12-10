@@ -5,6 +5,9 @@
 {% block body %}
  <div class="espaco">
     <h3>Listagem de Secretarias</h3>
+    <div class="direita">
+        <a href="{{ path('secretaria_novo') }}"><button type="button" class="ui button primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> Novo</button></a>
+    </div>
     <table class="ui celled table">
         <thead>
             <tr>
@@ -41,6 +44,5 @@
         {% endfor %}
         </tbody>
     </table>
-    <a href="{{ path('secretaria_novo') }}"><button type="button" class="ui button primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> Novo</button></a>
 </div>
 {% endblock %}

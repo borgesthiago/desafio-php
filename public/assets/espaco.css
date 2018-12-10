@@ -7,3 +7,9 @@
 .delete.form {
     display: inline;
 }
+
+.direita{
+    float: right;
+    margin-right: auto;
+    margin-bottom: 5px;
+}

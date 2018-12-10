@@ -5,7 +5,12 @@
 {% block body %}
 <div class="espaco">
     <h1>Editar Usuário</h1>
-
+    <div class="ui form grid">
+        <div class="one wide">
+            <label>Nome</label>
+            <input type="text" value="{{ user.id }}" name="funcionario" readonly>
+        </div>
+    </div>
     {{ include('user/_form.html.twig', {'button_label': 'Atualizar'}) }}
 
 <div class="container">

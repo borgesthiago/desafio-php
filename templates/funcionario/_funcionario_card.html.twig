@@ -32,7 +32,13 @@
                             <div class="event">
                                 <div class="content">
                                     <div class="summary">
-                                        Local de trabalho <a> {{ funcionario.secretaria.nome }}</a>
+                                        Local de trabalho <a> {{ funcionario.secretaria.nome }}</a><br>
+                                        Admissão: <a>{{ funcionario.admissao|date("d/m/Y")}}</a><br>
+                                        {% if not funcionario.exoneracao|default('') %}
+                                            Exoneração:
+                                        {% else %}
+                                            Exoneração: <a>{{ funcionario.exoneracao|date("d/m/Y")}}</a>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>

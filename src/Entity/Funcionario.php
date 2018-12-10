@@ -59,9 +59,25 @@ class Funcionario
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="funcionario", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Contato", inversedBy="funcionarios", cascade={"persist", "remove"})
+     * * @ORM\JoinColumn(nullable=true)
+     */
+    private $contato;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $admissao;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $exoneracao;
 
     
     public function getId()
@@ -178,6 +194,42 @@ class Funcionario
     public function setUser(User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getContato(): ?Contato
+    {
+        return $this->contato;
+    }
+
+    public function setContato(?Contato $contato): self
+    {
+        $this->contato = $contato;
+
+        return $this;
+    }
+
+    public function getAdmissao(): ?\DateTimeInterface
+    {
+        return $this->admissao;
+    }
+
+    public function setAdmissao(?\DateTimeInterface $admissao): self
+    {
+        $this->admissao = $admissao;
+
+        return $this;
+    }
+
+    public function getExoneracao(): ?\DateTimeInterface
+    {
+        return $this->exoneracao;
+    }
+
+    public function setExoneracao(?\DateTimeInterface $exoneracao): self
+    {
+        $this->exoneracao = $exoneracao;
 
         return $this;
     }

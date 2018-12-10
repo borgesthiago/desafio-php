@@ -1,30 +1,26 @@
 <?php
 
 namespace App\Form;
-use App\Entity\Funcionario;
-use App\Entity\Remuneracao;
+
+use App\Entity\Contato;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class RemuneracaoType extends AbstractType
+class ContatoType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('salario')
-            ->add('gratificacao')
-            ->add('desconto')
-            //->add('funcionario')
+            ->add('telefone')
+            ->add('celular')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Remuneracao::class,
+            'data_class' => Contato::class,
         ]);
     }
 }
