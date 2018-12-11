@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use App\Validator as AppAssert;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FuncionarioRepository")
  */
@@ -27,7 +27,8 @@ class Funcionario
     private $matricula;
 
     /**
-     * @ORM\Column(type="string", length=11)
+     * @ORM\Column(type="string", length=11, unique=true)
+     * @AppAssert\Cpf
      */
     private $cpf;
 

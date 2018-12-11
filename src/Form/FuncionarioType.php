@@ -12,6 +12,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use App\Form\Type\CpfType;
 
 class FuncionarioType extends AbstractType
 {
@@ -20,7 +21,9 @@ class FuncionarioType extends AbstractType
         $builder
             ->add('nome')
             ->add('matricula')
-            ->add('cpf')
+            ->add('cpf', CpfType::class, [
+                'required' => false
+            ])
             ->add('endereco')
             ->add('secretaria', EntityType::class, [
                 'class' => Secretaria::class,
