@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Repository;
-
+use Doctrine\ORM\Query\Expr\Join;
+use function Symfony\Component\DependencyInjection\Loader\Configurator\expr;
 use App\Entity\Funcionario;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -40,8 +41,22 @@ class FuncionarioRepository extends ServiceEntityRepository
                 $q->expr()->between($campo, ':data1', ':data2')
             );
             $q->andWhere("f.status = '$status'");
+            //$q->andWhere("f.tipo = '$tipo'");
             $q->setParameter('data1', $dataInicio->format('Y-m-d'));
             $q->setParameter('data2', $dataFim->format('Y-m-d'));
         return $q->getQuery()->getResult();
+    }
+
+    public function salarioTotal()
+    {
+        $q = $this->createQueryBuilder("f")
+            ->select('s.nome, SUM(r.salario) as total')
+            ->join("App\Entity\Secretaria", 's', Join::WITH, 'f.secretaria = s.id')
+            ->join("App\Entity\Remuneracao", 'r', Join::WITH, 'f.remuneracao = r.id')
+            ->where('f.status = :status ')
+            ->groupBy("s.nome")
+            ->setParameter(':status', '1')
+            ->getQuery();
+        return $q->getResult();
     }
 }
