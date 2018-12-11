@@ -26,4 +26,20 @@ class RemuneracaoRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleScalarResult();
     }
+
+    public function countGra()
+    {
+        return $this->createQueryBuilder('r')
+            ->select('sum(r.gratificacao)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function countDesc()
+    {
+        return $this->createQueryBuilder('r')
+            ->select('sum(r.desconto)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

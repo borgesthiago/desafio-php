@@ -12,20 +12,22 @@ class DashboardController extends AbstractController
     /**
      * @Route("/dashboard", name="dashboard")
      */
-    public function index(SecretariaRepository $totalSecretaria, FuncionarioRepository $totalFuncionario, RemuneracaoRepository $totalRemuneracao)
+    public function index(SecretariaRepository $totalSecretaria, FuncionarioRepository $totalFuncionario, RemuneracaoRepository $totalRemuneracao, RemuneracaoRepository $totalGratificacao, RemuneracaoRepository $totalDesconto)
     {
      
         $totalSec = $totalSecretaria->countAll();
-
         $totalFunc = $totalFuncionario->countAll();
-
         $totalRem = $totalRemuneracao->countSal();
+        $totalGra = $totalGratificacao->countGra();
+        $totalDesc = $totalDesconto->countDesc();
        
         return $this->render('dashboard/index.html.twig', [
             'controller_name' => 'DashboardController',
             'totalSec' => $totalSec,
             'totalFunc' => $totalFunc,
-            'totalRem'  => $totalRem
+            'totalRem'  => $totalRem,
+            'totalGra'  => $totalGra,
+            'totalDes'  => $totalDesc
         ]);
     }
 }

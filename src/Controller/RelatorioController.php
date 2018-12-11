@@ -163,5 +163,20 @@ class RelatorioController extends AbstractController
             ['totalSalarios' => $funcionarioRepository->salarioTotal()]
         );
     }
+
+    /**
+     * @param Request $request
+     *
+     * @Route("/relatorio/grafico",name="relatorio_grafico")
+     * @Template("relatorio/graficoSalario.html.twig")
+     * @return Response
+     */
+    public function graficoSalario(Request $request, FuncionarioRepository $funcionarioRepository)
+    {
+        return $this->render(
+            'relatorio/dashboard.html.twig',
+            ['totalSalarios' => $funcionarioRepository->salarioTotal()]
+        );
+    }
  
 }
